@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Updated Invoice {{invoiceNumber}}</title>
+</head>
+<body>
+    <p>Dear {{name}},</p>
+    <p>Your invoice #{{invoiceNumber}} for {{period}} has been updated.</p>
+    <p>Updated Amount Due: ₹{{amount}}</p>
+    <p>Due Date: {{dueDate}}</p>
+    <p>Please find the attached PDF for details.</p>
+    {{> footer}}
+</body>
+</html>
