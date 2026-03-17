@@ -16,7 +16,7 @@ const purchaseVoucherSchema = new mongoose.Schema(
       required: true
     },
     drNameOfLedger: {
-      type: mongoose.Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId, ref: 'Account',
       required: true
     },
     crTdsPayable: {
@@ -32,7 +32,7 @@ const purchaseVoucherSchema = new mongoose.Schema(
       required: true
     },
     crNameOfCreditor: {
-      type: mongoose.Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId , ref: 'Account',
       required: true
     },
     amountOfBill: {

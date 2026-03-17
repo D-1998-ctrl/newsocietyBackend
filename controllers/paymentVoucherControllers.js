@@ -122,7 +122,10 @@ const createPaymentVoucher = async (req, res) => {
 // Get all payment vouchers
 const getAllPaymentVouchers = async (req, res) => {
   try {
-    const paymentVouchers = await PaymentVoucher.find().sort({ createdAt: -1 });
+    const paymentVouchers = await PaymentVoucher.find()
+      .populate("nameOfCreditor", "accountName")
+      .populate("drName", "accountName ");
+    // sort({ createdAt: -1 });
     res.json(paymentVouchers);
   } catch (error) {
     res.status(500).json({ message: error.message });

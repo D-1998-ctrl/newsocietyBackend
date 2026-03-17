@@ -23,10 +23,9 @@ const serviceSchema = new mongoose.Schema({
     min: [0.0, 'Factor must be at least 0.0'],
     max: [100, 'Factor cannot exceed 100']
   },
-  createdAt: {
-    type: Date,
-    default: Date.now
-  }
-});
+
+},
+{ timestamps: true }
+);
 
 module.exports = mongoose.model('Service', serviceSchema);

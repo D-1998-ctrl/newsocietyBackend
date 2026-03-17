@@ -5,10 +5,10 @@ const AutoIncrement = require("mongoose-sequence")(mongoose);
 const paymentVoucherSchema = new mongoose.Schema({
   
   date: { type: Date, required: true },
-  nameOfCreditor: { type: mongoose.Schema.Types.ObjectId, required: true },
+  nameOfCreditor: { type: mongoose.Schema.Types.ObjectId,ref: 'Account', required: true },
   amountPaidDr: { type: Number, required: true },
   bank: { type: String },
-  drName: { type: mongoose.Schema.Types.ObjectId, required: true },
+  drName: { type: mongoose.Schema.Types.ObjectId, ref: 'Account',required: true },
   amountPaidCr: { type: Number, required: true },
   transactionType: { type: String, required: true },
   instNo: { type: String },

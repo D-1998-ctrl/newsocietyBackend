@@ -41,7 +41,7 @@ const createReceiptVoucher = async (req, res) => {
     const receipt = new Voucher({
       voucherId: savedVoucher._id,
       CrAmount: savedVoucher.crAmount,
-      LedgerId: savedVoucher.crAccount,
+      LedgerId: savedVoucher.crAccount._id,
       VoucherNumber: savedVoucher.receiptVoucherNumber,
       VoucherType: 'Receipt',
       EntryType: 'Credit'
@@ -50,7 +50,7 @@ const createReceiptVoucher = async (req, res) => {
     const Drreceipt = new Voucher({
       voucherId: savedVoucher._id,
       DrAmount: savedVoucher.crAmount,
-      LedgerId: savedVoucher.drAccount,
+      LedgerId: savedVoucher.drAccount._id,
       VoucherNumber: savedVoucher.receiptVoucherNumber,
       VoucherType: 'Receipt',
       EntryType: 'Debit'
@@ -73,9 +73,23 @@ const createReceiptVoucher = async (req, res) => {
 };
 
 // Get all receipt vouchers
+// const getReceiptVouchers = async (req, res) => {
+//   try {
+//     const vouchers = await ReceiptVoucher.find();
+//     res.json(vouchers);
+//   } catch (error) {
+//     res.status(500).json({ message: error.message });
+//   }
+// };
 const getReceiptVouchers = async (req, res) => {
   try {
-    const vouchers = await ReceiptVoucher.find();
+    const vouchers = await ReceiptVoucher.find()
+      .populate({
+        path: "referenceInvoice",
+        model: "InvoiceHeader",
+        select: "narration"
+      });
+
     res.json(vouchers);
   } catch (error) {
     res.status(500).json({ message: error.message });

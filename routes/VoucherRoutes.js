@@ -5,6 +5,7 @@ const {
   getAllVouchers,
   getVoucherById,
   getVouchersByLedgerId,
+  getAllVouchersByDate,
   updateVoucher,
   deleteVoucher,
 groupByLedgerId
@@ -12,8 +13,11 @@ groupByLedgerId
 
 router.post('/', createVoucher);
 router.get('/', getAllVouchers);
+router.get('/trialbal', getAllVouchersByDate);
+// router.get('/ledger', getVouchersByLedgerId); 
 router.get('/:id', getVoucherById);
 router.get('/ledger/:ledgerId', getVouchersByLedgerId);
+// router.get('/', getAllVouchersByDate);
 router.patch('/:id', updateVoucher);
 router.delete('/:id', deleteVoucher);
 router.get('/legerId/:LedgerId', groupByLedgerId)

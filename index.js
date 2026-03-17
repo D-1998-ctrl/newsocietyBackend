@@ -29,6 +29,10 @@ const demoMembers = require("./routes/demoMembersRoutes");
 const DemoInvoices = require("./routes/DemoInvoiceRoutes");
 const AuditTemplate=require('./routes/AuditTempRoutes');
 const AuditReports=require('./routes/AuditReportRoutes');
+const SignupRoute=require('./routes/SignupRoutes');
+const financialYearRoutes=require('./routes/FinancialYearRoutes')
+//OTp
+const otpController = require("./controllers/OTPController");
 
 
 mongoose.connect("mongodb://127.0.0.1:27017/accounting", {
@@ -46,6 +50,11 @@ const app = express();
 
 app.use(express.json());
 app.use(cors());
+//
+app.use("/otp", otpController);
+app.use("/users",SignupRoute);
+app.use("/finacialyrs",financialYearRoutes)
+//
 
 app.use("/Parking", ParkingRoute);
 
@@ -103,6 +112,7 @@ app.use("/Auditemp",AuditTemplate);
 app.use("/Audireport",AuditReports);
 
 
+
 app.get("/api/Account", async (req, res) => {
   try {
     const searchQuery = req.query.q || "";
@@ -143,3 +153,5 @@ app.get("/api/Invoice", async (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server is running on port http://localhost:${PORT}`);
 });
+
+

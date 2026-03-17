@@ -2,10 +2,10 @@ const mongoose = require("mongoose");
 
 const VoucherSchema = new mongoose.Schema({
 
-  VoucherId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'ReceiptVoucher',
-  },
+  // VoucherId: {
+  //   type: mongoose.Schema.Types.ObjectId,
+  //   ref: 'ReceiptVoucher',
+  // },
   
   VoucherType: { type: String, required: true },
 

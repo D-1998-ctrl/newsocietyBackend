@@ -6,8 +6,8 @@ const JournalVoucherSchema = new mongoose.Schema(
   {
    
     date: { type: String, required: true },
-    debitLedger: { type: String },
-    creditLedger: { type: String },
+    debitLedger: { type: mongoose.Schema.Types.ObjectId, ref: 'Account',},
+    creditLedger: { type: mongoose.Schema.Types.ObjectId, ref: 'Account',},
     debitAmount: { type: Number },
     creditAmount: { type: Number },
     narration: { type: String },

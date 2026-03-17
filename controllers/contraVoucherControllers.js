@@ -88,7 +88,9 @@ const createContraVoucher = async (req, res) => {
 // Get all contra vouchers
 const getAllContraVouchers = async (req, res) => {
   try {
-    const contraVouchers = await ContraVoucher.find();
+    const contraVouchers = await ContraVoucher.find()
+      .populate("crNameOfCreditor", "accountName")
+      .populate("nameOfLedger", "accountName ");
     res.json(contraVouchers);
   } catch (error) {
     res.status(500).json({ message: error.message });

@@ -99,7 +99,9 @@ const createPurchaseVoucher = async (req, res) => {
 // Get all purchase vouchers
 const getAllPurchaseVouchers = async (req, res) => {
   try {
-    const purchaseVouchers = await PurchaseVoucher.find().sort({ createdAt: -1 });
+    const purchaseVouchers = await PurchaseVoucher.find() 
+    .populate("crNameOfCreditor", "accountName")
+      .populate("drNameOfLedger", "accountName ");
     res.status(200).json({
       success: true,
       count: purchaseVouchers.length,
