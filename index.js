@@ -34,10 +34,15 @@ const financialYearRoutes=require('./routes/FinancialYearRoutes')
 //OTp
 const otpController = require("./controllers/OTPController");
 
+//for server uncomment while build
+// mongoose.connect("mongodb://SocietyServer:SOCIETYSERVER1234SERVERSOCIETY@127.0.0.1:27017/accounting?authSource=admin", {
+//   })
 
-mongoose.connect("mongodb://127.0.0.1:27017/accounting", {
-   
-  })
+//comment this while build
+mongoose.connect("mongodb://127.0.0.1:27017/accounting", { 
+})
+
+
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.error("MongoDB connection error:", error));
 

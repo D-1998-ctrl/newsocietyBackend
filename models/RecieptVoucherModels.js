@@ -4,21 +4,29 @@ const AutoIncrement = require("mongoose-sequence")(mongoose);
 
 const receiptVoucherSchema = new mongoose.Schema(
   {
+
+    societyId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Society",
+      required: true
+    },
+
+
     voucherDate: {
       type: Date,
     },
-   
+
     narration: {
       type: String,
     },
     drAccount: {
-       _id: { type: mongoose.Schema.Types.ObjectId, required: true },
+      _id: { type: mongoose.Schema.Types.ObjectId, required: true },
       // accountId: { type:mongoose.Schema.Types.ObjectId, required: true },
       accountName: { type: String, required: true },
       drOrCr: { type: String, required: true },
     },
     crAccount: {
-       _id: { type: mongoose.Schema.Types.ObjectId, required: true },
+      _id: { type: mongoose.Schema.Types.ObjectId, required: true },
       // accountId: { type: mongoose.Schema.Types.ObjectId, required: true },
       accountName: { type: String, required: true },
       drOrCr: { type: String, required: true },

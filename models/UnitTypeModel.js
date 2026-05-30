@@ -3,6 +3,12 @@ const { Schema } = mongoose;
 
 // Define the schema for the UnitType
 const unitTypeSchema = new Schema({
+
+   societyId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Society",
+      required: true
+    },
   name: {
     type: String,
     required: true, // The name is required

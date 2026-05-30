@@ -3,18 +3,23 @@ const AutoIncrement = require("mongoose-sequence")(mongoose);
 
 const accountSchema = new mongoose.Schema(
   {
-    // accountId: { type: Number, unique: true, },
+    societyId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Society",
+      required: true
+    },
+
     accountName: { type: String, },
 
     groupId: { type: mongoose.Schema.Types.ObjectId, ref: 'accountGroup', },
-    subGroupId: { type: mongoose.Schema.Types.ObjectId, ref: 'accountSubgroup',  },
+    subGroupId: { type: mongoose.Schema.Types.ObjectId, ref: 'accountSubgroup', },
 
     opening: { type: Number, default: 0 },
-    drOrCr: { type: String, enum: ['DR', 'CR'],  },
+    drOrCr: { type: String, enum: ['DR', 'CR'], },
     typeCode: {
       type: String,
       enum: ['Balance Sheet', 'Profit and Loss Account', 'Trading Account'],
-      
+
     },
   },
   { timestamps: true }

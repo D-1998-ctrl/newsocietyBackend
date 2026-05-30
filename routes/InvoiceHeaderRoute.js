@@ -1,18 +1,25 @@
 const express = require('express');
 const {
-  createInvoiceHeader,
+  getInvHeaderBySocietyId,
+  createinvhdBysoceityId,
+  updateinvhdBySociety,
+  deleteinvhdBySociety,
   getInvoiceHeaders,
-  getInvoiceHeaderById,
-  updateInvoiceHeader,
-  deleteInvoiceHeader
+    // createInvoiceHeader,
+  // getInvoiceHeaderById,
+  //  updateInvoiceHeader,
+  // deleteInvoiceHeader,
 } = require('../controllers/InvoiceHeaderController');
 const router = express.Router();
-
-router.post('/', createInvoiceHeader);
-router.get('/', getInvoiceHeaders);
-router.get('/:id', getInvoiceHeaderById);
-router.patch('/:id', updateInvoiceHeader);
-router.delete('/:id', deleteInvoiceHeader);
+router.get('/society/:societyId', getInvHeaderBySocietyId);
+router.post("/society/:societyId/", createinvhdBysoceityId);
+router.put("/society/:societyId/invoiceheader/:invoiceherderId", updateinvhdBySociety);
+router.delete("/society/:societyId/invoiceheader/:invoiceherderId", deleteinvhdBySociety);
+router.get('/', getInvoiceHeaders)
+// router.post('/', createInvoiceHeader);
+// router.get('/:id', getInvoiceHeaderById);
+//  router.patch('/:id', updateInvoiceHeader);
+// router.delete('/:id', deleteInvoiceHeader);
 
 module.exports = router;
 

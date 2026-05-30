@@ -6,7 +6,12 @@ const VoucherSchema = new mongoose.Schema({
   //   type: mongoose.Schema.Types.ObjectId,
   //   ref: 'ReceiptVoucher',
   // },
-  
+  societyId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Society",
+    required: true
+  },
+
   VoucherType: { type: String, required: true },
 
   LedgerId: {
@@ -19,11 +24,11 @@ const VoucherSchema = new mongoose.Schema({
   DrAmount: { type: Number, },
   VoucherNumber: { type: Number, required: true },
 
-EntryType: {
-  type: String,
-  enum: ['Credit', 'Debit'],
- 
-},
+  EntryType: {
+    type: String,
+    enum: ['Credit', 'Debit'],
+
+  },
 
 },
   { timestamps: true });

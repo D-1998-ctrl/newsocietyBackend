@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
 
 const parkingSchema = new mongoose.Schema({
+  societyId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Society",
+    required: true
+  },
   parkingType: {
     type: String,
     required: true

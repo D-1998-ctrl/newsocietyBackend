@@ -4,10 +4,14 @@ const AutoIncrement = require("mongoose-sequence")(mongoose);
 
 const JournalVoucherSchema = new mongoose.Schema(
   {
-   
+    societyId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Society",
+      required: true
+    },
     date: { type: String, required: true },
-    debitLedger: { type: mongoose.Schema.Types.ObjectId, ref: 'Account',},
-    creditLedger: { type: mongoose.Schema.Types.ObjectId, ref: 'Account',},
+    debitLedger: { type: mongoose.Schema.Types.ObjectId, ref: 'Account', },
+    creditLedger: { type: mongoose.Schema.Types.ObjectId, ref: 'Account', },
     debitAmount: { type: Number },
     creditAmount: { type: Number },
     narration: { type: String },
@@ -23,5 +27,5 @@ JournalVoucherSchema.plugin(AutoIncrement, {
 
 
 
- const JournalVoucher = mongoose.model("JournalVoucher", JournalVoucherSchema);
+const JournalVoucher = mongoose.model("JournalVoucher", JournalVoucherSchema);
 module.exports = JournalVoucher;

@@ -2,19 +2,33 @@ const express = require('express');
 const router = express.Router();
 const contraVoucherController = require('../controllers/contraVoucherControllers');
 
+
+// Get  contra vouchers by societyId
+router.get('/society/:societyId', contraVoucherController.getContraVBySocietyId);
+
+
 // Create a new contra voucher
-router.post('/', contraVoucherController.createContraVoucher);
+ router.post('/society/:societyId', contraVoucherController.createContraVBySocietyID);
+
+router.put("/society/:societyId/contra/:contravoucherID", contraVoucherController.updateContraVBySociety);
+router.delete("/society/:societyId/contra/:contravoucherID",contraVoucherController.deleteContraVBySociety);
+
+
+
+
+// Create a new contra voucher
+// router.post('/', contraVoucherController.createContraVoucher);
 
 // Get all contra vouchers
 router.get('/', contraVoucherController.getAllContraVouchers);
 
-// Get a single contra voucher by ID
-router.get('/:id', contraVoucherController.getContraVoucherById);
+// // Get a single contra voucher by ID
+// router.get('/:id', contraVoucherController.getContraVoucherById);
 
-// Update a contra voucher by ID
-router.put('/:id', contraVoucherController.updateContraVoucher);
+// // Update a contra voucher by ID
+// router.put('/:id', contraVoucherController.updateContraVoucher);
 
-// Delete a contra voucher by ID
-router.delete('/:id', contraVoucherController.deleteContraVoucher);
+// // Delete a contra voucher by ID
+// router.delete('/:id', contraVoucherController.deleteContraVoucher);
 
 module.exports = router;

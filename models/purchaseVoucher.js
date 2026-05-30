@@ -2,13 +2,19 @@ const mongoose = require('mongoose');
 const AutoIncrement = require('mongoose-sequence')(mongoose);
 
 const purchaseVoucherSchema = new mongoose.Schema(
-   {
-  //   voucherNumber: {
-  //     type: Number,
-  //     // Don't set unique here if you're using custom sequences; handled by plugin
-  //   },
+  {
+    //   voucherNumber: {
+    //     type: Number,
+    //     // Don't set unique here if you're using custom sequences; handled by plugin
+    //   },
     date: {
       type: Date,
+      required: true
+    },
+
+    societyId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Society",
       required: true
     },
     refBillNo: {
@@ -32,7 +38,7 @@ const purchaseVoucherSchema = new mongoose.Schema(
       required: true
     },
     crNameOfCreditor: {
-      type: mongoose.Schema.Types.ObjectId , ref: 'Account',
+      type: mongoose.Schema.Types.ObjectId, ref: 'Account',
       required: true
     },
     amountOfBill: {
@@ -57,8 +63,8 @@ const purchaseVoucherSchema = new mongoose.Schema(
     customerNo: {
       type: String
     },
-    
-    isregisterd:{type:Boolean},
+
+    isregisterd: { type: Boolean },
 
   },
   {

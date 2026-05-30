@@ -1,40 +1,40 @@
 const express = require('express');
-const  {
-  createAccount,
-  getAccounts,
-  getAccountById,
-  updateAccount,
-  deleteAccount,
-  searchGroupAccounts,
-  getAccountId,
+const {
 
+  getAccounts,
+  getAccountsBySocietyId,
+  createAccountsBysoceityId,
+  updateAccountsBySociety,
+  deleteAccountBySociety,
   getProfitAndLoss,
   getBalanceSheetLedgers,
-
-  getAccountByGroupCode
-
+  // createAccount,
+  // getAccountById,
+  // updateAccount,
+  // searchGroupAccounts,
+  // getAccountId,
+  // getAccountByGroupCode
   // getAccountByAccountId
-  } = require('../controllers/LedgerController');
+} = require('../controllers/LedgerController');
 
 
-  const router = express.Router();
-
-// Routes for accounts
-router.post('/', createAccount);
+const router = express.Router();
 router.get('/', getAccounts);
-router.get('/id', getAccountId);
-
-router.get('/search', searchGroupAccounts);
-router.get('/:id', getAccountById);
+router.get('/society/:societyId', getAccountsBySocietyId);
+router.post("/society/:societyId/", createAccountsBysoceityId);
+router.put("/society/:societyId/ledgers/:ledgerId", updateAccountsBySociety);
+router.delete("/society/:societyId/ledgers/:ledgerId", deleteAccountBySociety);
+// router.get('/profit-loss/report/:societyId', getProfitAndLoss);
+router.get('/reports/profit-loss/:societyId', getProfitAndLoss);
+// router.get('/api/accounts/balance-sheet', getBalanceSheetLedgers);
+router.get('/balance-sheet/:societyId', getBalanceSheetLedgers);
+// router.get('/id', getAccountId);
+// router.get('/search', searchGroupAccounts);
+// router.get('/:id', getAccountById);
 // router.get('/accounts/:accountId',getAccountByAccountId);
-router.patch('/:id', updateAccount);
-router.delete('/:id', deleteAccount);
-
-
-
-router.get('/profit-loss/report', getProfitAndLoss);
-router.get('/api/accounts/balance-sheet', getBalanceSheetLedgers);
-
+// router.patch('/:id', updateAccount);
+// Routes for accounts
+// router.post('/', createAccount);
 
 
 module.exports = router;

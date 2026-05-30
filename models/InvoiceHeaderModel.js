@@ -4,16 +4,22 @@ const AutoIncrement = require("mongoose-sequence")(mongoose);
 
 const InvoiceHeaderSchema = new mongoose.Schema(
   {
-  
-    invoiceDate: { type: Date},
+
+    societyId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Society",
+      required: true
+    },
+
+    invoiceDate: { type: Date },
     memberId:
-    { type: mongoose.Schema.Types.ObjectId, ref: 'Member' },
+      { type: mongoose.Schema.Types.ObjectId, ref: 'Member' },
     //  { type: String, required: true },
-    period: { type: String,  maxlength: 50 },
-    dueDate: { type: Date},
+    period: { type: String, maxlength: 50 },
+    dueDate: { type: Date },
     // amtInWords: { type: String },
-     amtInWords: { type: String },
-    narration: { type: String,  maxlength: 200 }
+    amtInWords: { type: String },
+    narration: { type: String, maxlength: 200 }
   },
   { timestamps: true }
 );

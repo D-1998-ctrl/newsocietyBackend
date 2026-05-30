@@ -2,19 +2,22 @@ const express = require('express');
 const router = express.Router();
 const paymentVoucherController = require('../controllers/paymentVoucherControllers');
 
-// Create a new payment voucher
-router.post('/', paymentVoucherController.createPaymentVoucher);
-
-// Get all payment vouchers
+router.get('/society/:societyId',paymentVoucherController.getPaymentVBySocietyId);
 router.get('/', paymentVoucherController.getAllPaymentVouchers);
+router.post("/society/:societyId/", paymentVoucherController.createPaymentVBySocietyId);
+router.put("/society/:societyId/payment/:paymentvoucherID", paymentVoucherController.updatePVBySociety);
+router.delete("/society/:societyId/payment/:paymentvoucherID",paymentVoucherController.deletePVBySociety);
 
-// Get a single payment voucher by ID
-router.get('/:id', paymentVoucherController.getPaymentVoucherById);
+// Create a new payment voucher
+// router.post('/', paymentVoucherController.createPaymentVoucher);
 
-// Update a payment voucher by ID
-router.put('/:id', paymentVoucherController.updatePaymentVoucher);
+// // Get a single payment voucher by ID
+// router.get('/:id', paymentVoucherController.getPaymentVoucherById);
 
-// Delete a payment voucher by ID
-router.delete('/:id', paymentVoucherController.deletePaymentVoucher);
+// // Update a payment voucher by ID
+// router.put('/:id', paymentVoucherController.updatePaymentVoucher);
+
+// // Delete a payment voucher by ID
+// router.delete('/:id', paymentVoucherController.deletePaymentVoucher);
 
 module.exports = router;

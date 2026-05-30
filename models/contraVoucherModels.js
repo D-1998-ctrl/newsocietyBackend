@@ -2,7 +2,11 @@ const mongoose = require("mongoose");
 const AutoIncrement = require("mongoose-sequence")(mongoose);
 
 const contraVoucherSchema = new mongoose.Schema({
-  
+  societyId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Society",
+    required: true
+  },
   date: { type: Date, required: true },
   amountWithdrawn: { type: Number, required: true },
   previousOSBills: { type: String },
@@ -11,10 +15,10 @@ const contraVoucherSchema = new mongoose.Schema({
   chequeNo: { type: String },
   instDate: { type: Date },
   bankName: { type: String },
-   branchName: { type: String },
+  branchName: { type: String },
   narration: { type: String },
-  crNameOfCreditor: {type: mongoose.Schema.Types.ObjectId, ref: 'Account', },
-  nameOfLedger: {type: mongoose.Schema.Types.ObjectId ,ref: 'Account',},
+  crNameOfCreditor: { type: mongoose.Schema.Types.ObjectId, ref: 'Account', },
+  nameOfLedger: { type: mongoose.Schema.Types.ObjectId, ref: 'Account', },
   crAmountWithdraw: { type: Number },
   amount: { type: Number },
   branch: { type: String },
